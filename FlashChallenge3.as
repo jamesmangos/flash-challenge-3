@@ -1,27 +1,37 @@
 ﻿package
-{
+{	
 	import flash.geom.*
 	import flash.display.*
 	
 	public class FlashChallenge3 extends Sprite
 	{
+		
 		public function FlashChallenge3()
 		{
-			//border
-			graphics.lineStyle(1,0x00FF00);
-			graphics.moveTo(200,200);
-			graphics.lineTo(400,200);
-			graphics.lineTo(400,350);
-			graphics.lineTo(200,350);
-			graphics.lineTo(200,200);
+			//optional stage allignment code
+			/*import flash.display.StageAlign;
+			import flash.display.StageScaleMode;
+			this.stage.scaleMode = StageScaleMode.NO_SCALE;
+			this.stage.align = StageAlign.TOP_LEFT;*/
 			
-			//gradient background
-			var matr:Matrix = new Matrix();
-			matr.createGradientBox(200,150,0,200,200);
-			var spreadMethod:String = SpreadMethod.PAD;
-			graphics.beginGradientFill(GradientType.LINEAR,[0xFFFFFF,0x000000], [1, 1], [0x00, 0xFF], matr, spreadMethod);
-			graphics.drawRect(200,200,200,150);
-			graphics.endFill();
+			//array of values for the rectangles
+			var myArray = [[0,stage.stageHeight-100,20,100,[0x0000FF,0xFF0000]], [stage.stageWidth/2,stage.stageHeight-50,20,50,[0x0000FF,0xFF0000]], [stage.stageWidth-20,stage.stageHeight-80,20,80,[0x0000FF,0xFF0000]]];
+			
+			//create sprites
+			var squares:Array = new Array();
+			for (var i:int = 0; i<myArray.length; i++)
+			{
+				squares[i] = new Sprite();
+				addChild(squares[i]);
+			}
+			
+			//draw rectangles with properties from first array
+			for (var i:int = 0; i<myArray.length; i++)
+			{
+				squares[i].graphics.beginFill(myArray[i][4][1]);
+				squares[i].graphics.drawRect(myArray[i][0],myArray[i][1],myArray[i][2], myArray[i][3]);
+				squares[1].graphics.endFill();
+			}
 		}
 	}
 }
