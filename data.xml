@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GALLERY>
-<IMAGE TITLE="school">image1.jpg</IMAGE>
-<IMAGE TITLE="garden">image2.jpg</IMAGE>
-<IMAGE TITLE="shop">image3.jpg</IMAGE>
-</GALLERY>
+
+<squares>
+	<square>
+		<x>0</x>
+		<y>stage.stageHeight-100</y>
+		<width>20</width>
+		<height>100</height>
+		<colour>[0x0000FF,0xFF0000]</colour>
+	</square>
+
+	<square>
+		<x>stage.stageWidth/2</x>
+		<y>stage.stageHeight-50</y>
+		<width>20</width>
+		<height>50</height>
+		<colour>[0x0000FF,0xFF0000]</colour>
+	</square>
+
+	<square>
+		<x>stage.stageWidth-20</x>
+		<y>stage.stageHeight-80</y>
+		<width>20</width>
+		<height>80</height>
+		<colour>[0x0000FF,0xFF0000]</colour>
+	</square>
+</squares>
