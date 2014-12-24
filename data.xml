@@ -7,6 +7,7 @@
 		<width>20</width>
 		<height>100</height>
 		<colour>0xFF0000</colour>
+		<word>test</word>
 	</square>
 
 	<square>
@@ -15,6 +16,7 @@
 		<width>20</width>
 		<height>50</height>
 		<colour>0x00FF00</colour>
+		<word>trial</word>
 	</square>
 
 	<square>
@@ -23,5 +25,6 @@
 		<width>20</width>
 		<height>80</height>
 		<colour>0x0000FF</colour>
+		<word>something</word>
 	</square>
 </squares>

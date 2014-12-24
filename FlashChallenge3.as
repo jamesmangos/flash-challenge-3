@@ -37,6 +37,7 @@ class containerWindow extends MovieClip
 	private var myLoader:URLLoader = new URLLoader();//construct URL loader
 	
 	private var borderWidth:int = 1;
+	private var windowSize:int = 300;
 	
 	public function containerWindow()
 	{
@@ -53,9 +54,9 @@ class containerWindow extends MovieClip
 		this.y = 100;
 		graphics.lineStyle(borderWidth,0x000000,1);
 		graphics.moveTo(this.x, this.y);
-		graphics.lineTo(this.x + 200 - borderWidth, this.y);
-		graphics.lineTo(this.x + 200 - borderWidth, this.y + 200 - borderWidth);
-		graphics.lineTo(this.x, this.y + 200 - borderWidth);
+		graphics.lineTo(this.x + windowSize - borderWidth, this.y);
+		graphics.lineTo(this.x + windowSize - borderWidth, this.y + windowSize - borderWidth);
+		graphics.lineTo(this.x, this.y + windowSize - borderWidth);
 		graphics.lineTo(this.x, this.y);
 		
 		//draw titleBar
@@ -69,9 +70,9 @@ class containerWindow extends MovieClip
 		//title words
 		titleLabel.x = this.x;
 		titleLabel.y = this.y;
-		//titleLabel.width = this.width / 2 - this.x;
-		titleLabel.height = 20;
 		titleLabel.text = "Test Chart";
+		titleLabel.width = titleLabel.textWidth + 5;
+		titleLabel.height = 20;
 		titleLabel.textColor = 0xFFFFFF;
 		titleLabel.selectable = false;
 		addChild(titleLabel);
@@ -98,12 +99,29 @@ class containerWindow extends MovieClip
 		//instatiate XML variable with the data from the XML file
 		myXML = new XML(e.target.data);
 			
-		//create sprites
+		//create sprites and draw labels
 		var squares:Array = new Array();
+		var squareLabel:Array = new Array();
 		for (var i:int = 0; i < myXML.square.length(); i++)
 		{
 			squares[i] = new Sprite();
 			addChild(squares[i]);
+			
+			squareLabel[i] = new TextField();
+			squareLabel[i].text = myXML.square[i].word;
+			squareLabel[i].width = squareLabel[i].textWidth + 5;
+			squareLabel[i].height = 20;
+			if (i == 0)
+			{
+				squareLabel[i].x = this.x + (this.width-myXML.square[i].width)*(i/(myXML.square.length()-1));
+			}
+			else
+			{
+				squareLabel[i].x = this.x + (this.width-squareLabel[i].width)*(i/(myXML.square.length()-1));
+			}
+			squareLabel[i].y = this.y + this.height- myXML.square[i].height - squareLabel[i].height;//above the square
+			squareLabel[i].selectable = false;
+			addChild(squareLabel[i]);
 		}
 			
 		//draw rectangles
